@@ -1,0 +1,10 @@
+body {
+  background-image: url("../src/Components/Pages/Home/Assets/bg-masthead.jpg");
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
