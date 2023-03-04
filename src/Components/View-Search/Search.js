@@ -1,49 +1,25 @@
 import React from "react";
-import { InputGroup, FormControl } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { useReducer, useContext } from "react";
-import { ReducerDomain } from "../../reducer/ReducerDomain";
-import { DomainTypes } from "../../reducer/DomainTypes";
-import { alfabetic } from "../../data/data";
+import { useContext } from "react";
 import { MainContext } from "../../Context/MainContext";
 import { useForm } from "../../Utils/useForm";
-import { AlfabeticDomain } from "../AlfabeticDomain/AlfabeticDomain";
+import { useNavigate } from "react-router-dom";
 
 export const Search = () => {
-  const initialState = useContext(MainContext);
+  const { search, reset: resetSearched } = useContext(MainContext);
 
-  const { searchText, handleInputChange } = useForm({
+  const navigate = useNavigate();
+
+  const { searchText, handleInputChange, reset } = useForm({
     searchText: "",
   });
 
-  const [state, dispatch] = useReducer(ReducerDomain, initialState);
-  console.log("RRR", state);
-  //destructuro
-
-  //const { alfabetic, domainFilter } = state;
-
-  //Metodos
   const handleSearchDomain = (event) => {
     event.preventDefault();
     if (searchText.trim().length <= 1) return;
 
-    console.log({ searchText });
+    search(searchText);
 
-    const action = {
-      type: DomainTypes.FILTER_NAME,
-      state: state,
-      payload: searchText,
-    };
-    dispatch(action);
-  };
-
-  const handleCategory = (category) => {
-    // const action = {
-    //   type: DomainTypes.FILTER_CATEGORY,
-    //   payload: category,
-    // };
-    // dispatch(action);
+    navigate(`?searchText=${searchText}`);
   };
 
   return (
@@ -63,6 +39,16 @@ export const Search = () => {
         ></input>
       </div>
       <button className="btn btn-outline-primary mx-1 my-1">Search</button>
+      <button
+        className="btn btn-outline-primary mx-1 my-1"
+        onClick={(e) => {
+          reset();
+          resetSearched();
+          navigate(``);
+        }}
+      >
+        Reset
+      </button>
     </form>
   );
 };

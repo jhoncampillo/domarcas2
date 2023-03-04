@@ -5,20 +5,18 @@ import { useState, useContext, useEffect } from "react";
 import { CategoiresDomain } from "../CategoriesDomain/CategoiresDomain";
 import { AlfabeticDomain } from "../AlfabeticDomain/AlfabeticDomain";
 import { MainContext } from "../../Context/MainContext";
+import { useLocation } from "react-router-dom";
+import queryString from "query-string";
+
 //import { alfabetic } from "../../data/data";
 
 export const ViewSearch = () => {
-  const domainFilter = useContext(MainContext);
+  const { allDomains, searched } = useContext(MainContext);
+  const location = useLocation();
 
-  //const [dominiosort, setDominios] = useState(domainFilter);
+  const { searchText } = queryString.parse(location.search);
 
-  // useEffect(() => {
-  //   console.log("fff", dominiosort);
-  //   //console.log("jj useEffect", dominios);
-  //   const sorted = domainFilter.sort((a, b) => (a.name > b.name ? 1 : -1));
-  //   console.log("jhon Alf ", sorted);
-  //   return setDominios(sorted);
-  // }, []);
+  const finalList = searchText ? searched : allDomains;
 
   const [view, setView] = useState(true);
 
@@ -42,9 +40,9 @@ export const ViewSearch = () => {
           </button>
         </div>
         {view ? (
-          <AlfabeticDomain domainFilter={domainFilter} />
+          <AlfabeticDomain dominios={finalList} />
         ) : (
-          <CategoiresDomain domainFilter={domainFilter} />
+          <CategoiresDomain dominios={finalList} />
         )}
       </div>
     </div>

@@ -1,11 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
+import { MainContext } from "../../Context/MainContext";
 //import { useState, useEffect } from "react";
 
-export const AlfabeticDomain = ({ domainFilter }) => {
-  //const [dominios, setDominios] = useState(domainFilter);
-  console.log("444", domainFilter);
-
+export const AlfabeticDomain = ({ dominios }) => {
   //   const handleAssending = (a, b) => {
   //     const sorted = dominios.sort((a, b) => (a.name > b.name ? 1 : -1));
   //     setDominios(sorted);
@@ -55,7 +53,7 @@ export const AlfabeticDomain = ({ domainFilter }) => {
               <th scope="col">Opciones</th>
             </tr>
           </thead>
-          {domainFilter.map(
+          {dominios.map(
             (
               {
                 name,

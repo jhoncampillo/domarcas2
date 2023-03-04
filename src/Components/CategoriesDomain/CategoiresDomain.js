@@ -1,16 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { Button } from "react-bootstrap";
-//import { alfabetic } from "../../data/data";
-import { Modal } from "../Modal/Modal";
+import { MainContext } from "../../Context/MainContext";
 
-export const CategoiresDomain = ({ domainFilter }) => {
-  //const [state, setDominios] = useState(dominios);
+export const CategoiresDomain = ({ dominios }) => {
   const [showModal, setShowModal] = useState(false);
-
-  console.log("estos son los dominio", domainFilter);
-  // const { name, extension, caracteres, precioVenta, renta, oferta, categoria } =
-  //   dominios;
 
   const handleComprar = () => {
     setShowModal(!showModal);
@@ -29,12 +23,11 @@ export const CategoiresDomain = ({ domainFilter }) => {
 
   return (
     <>
-      {/* {showModal && <Modal />} */}
       <h2 style={{ color: "white" }}>Tarjetas de Dominio</h2>
       <hr />
       <hr />
       <div className="d-flex p-2 flex-wrap p-2">
-        {domainFilter.map(
+        {dominios.map(
           (
             {
               name,
