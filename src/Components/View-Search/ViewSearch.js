@@ -7,6 +7,7 @@ import { AlfabeticDomain } from "../AlfabeticDomain/AlfabeticDomain";
 import { MainContext } from "../../Context/MainContext";
 import { useLocation } from "react-router-dom";
 import queryString from "query-string";
+import { CartDomain } from "../Cart/CartDomain";
 
 //import { alfabetic } from "../../data/data";
 
@@ -26,7 +27,7 @@ export const ViewSearch = () => {
   };
 
   return (
-    <div className="container-sm">
+    <div className="container">
       <h1 style={{ color: "white" }}>Cambio de Vistas</h1>
       <hr style={{ color: "white" }} />
       <div className="row">
@@ -39,11 +40,14 @@ export const ViewSearch = () => {
             Lista/Categorias
           </button>
         </div>
-        {view ? (
-          <AlfabeticDomain dominios={finalList} />
-        ) : (
-          <CategoiresDomain dominios={finalList} />
-        )}
+        <CartDomain />
+        <div>
+          {view ? (
+            <AlfabeticDomain dominios={finalList} />
+          ) : (
+            <CategoiresDomain dominios={finalList} />
+          )}
+        </div>
       </div>
     </div>
   );

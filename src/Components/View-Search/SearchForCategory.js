@@ -5,37 +5,39 @@ import { useForm } from "../../Utils/useForm";
 import { useNavigate } from "react-router-dom";
 import "./form.css";
 
-export const Search = () => {
-  const { search, reset: resetSearched } = useContext(MainContext);
+export const SearchForCategory = () => {
+  const { search, reset: resetSearched, searchCategoria } = useContext(
+    MainContext
+  );
 
   const navigate = useNavigate();
 
-  const { searchText, handleInputChange, reset } = useForm({
-    searchText: "",
+  const { searchTextc, handleInputChange, reset } = useForm({
+    searchTextc: "",
   });
 
-  const handleSearchDomain = (event) => {
+  const handleSearchDomainct = (event) => {
     event.preventDefault();
-    if (searchText.trim().length <= 1) return;
+    if (searchTextc.trim().length <= 1) return;
 
-    search(searchText);
+    searchCategoria(searchTextc);
 
-    navigate(`?searchText=${searchText}`);
+    navigate(`?searchText=${searchTextc}`);
   };
 
   return (
-    <form onSubmit={handleSearchDomain} className="container">
-      <div className="input-group">
+    <form onSubmit={handleSearchDomainct} className="container">
+      <div className="input-group col-5">
         <div className="input-group-prepend">
           <span className="input-group-text" id="">
-            Busca Dominio por Nombre
+            Busca Dominio por categoria
           </span>
         </div>
         <input
           type="text"
-          className="form-control Rent"
-          name="searchText"
-          value={searchText}
+          className="form-control"
+          name="searchTextc"
+          value={searchTextc}
           onChange={handleInputChange}
         ></input>
       </div>
