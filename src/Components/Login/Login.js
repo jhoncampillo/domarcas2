@@ -2,8 +2,16 @@ import React from "react";
 import { Form, Button, InputGroup, FormControl } from "react-bootstrap/";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    console.log("Ir al Menu de Admon");
+    navigate("/addDomain", { replace: true });
+  };
+
   return (
     <div>
       <h1 style={{ color: "white" }}>Login</h1>
@@ -52,7 +60,7 @@ export const Login = () => {
             label="Acepto politicas de privacidad"
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" onClick={handleLogin}>
           Submit
         </Button>
       </Form>

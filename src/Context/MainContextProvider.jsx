@@ -4,6 +4,7 @@ import { alfabetic } from "../data/data";
 import { MainContext } from "./MainContext";
 import { ReducerDomain } from "../reducer/ReducerDomain";
 import { DomainTypes } from "../reducer/DomainTypes";
+//import { CartDomain } from "../Components/Cart/CartDomain";
 
 export const MainContextProvider = ({ children }) => {
   //Modal
@@ -32,6 +33,36 @@ export const MainContextProvider = ({ children }) => {
     dispatch(action);
   };
 
+  const delFromCart = (name) => {
+    console.log(name);
+    const action = {
+      type: DomainTypes.REMOVE_ONE_FROM_CARD,
+      payload: name,
+    };
+    dispatch(action);
+  };
+
+  const clearCart = () => {
+    const action = {
+      type: DomainTypes.CLEAR_CART,
+      payload: alfabetic,
+    };
+    dispatch(action);
+  };
+
+  //Login*********************************/
+
+  const [stateLogin, setStateLogin] = useState(true);
+  const handleLogin = () => {
+    console.log("Login,", stateLogin);
+    setStateLogin(!stateLogin);
+    const action = {
+      type: DomainTypes.LOGIN,
+      payload: stateLogin,
+    };
+    dispatch(action);
+  };
+
   return (
     <MainContext.Provider
       value={{
@@ -42,6 +73,10 @@ export const MainContextProvider = ({ children }) => {
         isOpen,
         setIsOpen,
         addToCart,
+        delFromCart,
+        clearCart,
+        handleLogin,
+        stateLogin,
       }}
     >
       {children}

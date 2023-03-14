@@ -28,12 +28,14 @@ Modal.setAppElement("#root");
 
 export const DominioModal = () => {
   //const [isOpen, setIsOpen] = useState(true);
-  const { isOpen, setIsOpen } = useContext(MainContext);
-
+  const { isOpen, setIsOpen, cart, state } = useContext(MainContext);
+  console.log("Jhon", cart);
   const [formValues, setFormValues] = useState({
     title: "Jhon",
     note: "Campillo",
     email: "jh@gmail.com",
+    direccion: "Calle xx- y-z",
+    telefono: "(57)+ 45784851",
     start: new Date(),
     end: addHours(new Date(), 2),
   });
@@ -55,7 +57,7 @@ export const DominioModal = () => {
       [changing]: event,
     });
   };
-
+  //aperturo modal
   const onCloseModal = () => {
     console.log("Cerrado Modal");
     setIsOpen(!isOpen);
@@ -73,7 +75,7 @@ export const DominioModal = () => {
       overlayClassName="modal-fondo"
       closeTimeoutMS={200}
     >
-      <h1> Ofertar por tu dominio </h1>
+      <h1> Ofertar por tu(s) dominio(s) </h1>
       <hr />
       <form className="container">
         <div className="form-group mb-2">
@@ -93,7 +95,13 @@ export const DominioModal = () => {
 
         <div className="form-group mb-2">
           <label>Dominio a ofretar</label>
-          <h2>xxxxssdsdsad</h2>
+          <ul>
+            {cart.map((dominio, index) => (
+              <li key={index}>
+                <strong>{dominio.name}</strong>
+              </li>
+            ))}
+          </ul>
           {/* <input className="form-control" placeholder="Fecha inicio" /> */}
           {/* <DatePicker
             selected={formValues.end}
@@ -157,7 +165,7 @@ export const DominioModal = () => {
             placeholder="Direccion de contacto"
             name="email"
             autoComplete="off"
-            value={formValues.title}
+            value={formValues.direccion}
             onChange={onInputChangued}
           />
           <small id="emailHelp" className="form-text text-muted">
@@ -173,7 +181,7 @@ export const DominioModal = () => {
             placeholder="(area)+ numero"
             name="email"
             autoComplete="off"
-            value={formValues.title}
+            value={formValues.telefono}
             onChange={onInputChangued}
           />
           <small id="emailHelp" className="form-text text-muted">
@@ -196,7 +204,7 @@ export const DominioModal = () => {
 
         <button type="submit" className="btn btn-outline-primary btn-block">
           <i className="far fa-save"></i>
-          <span> Guardar</span>
+          <span> enviar</span>
         </button>
       </form>
     </Modal>

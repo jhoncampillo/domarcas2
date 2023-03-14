@@ -5,8 +5,8 @@ import { MainContext } from "../../Context/MainContext";
 import { DominioModal } from "../DominioModal/DominioModal";
 
 export const AlfabeticDomain = ({ dominios }) => {
-  const { isOpen, setIsOpen, addToCart } = useContext(MainContext);
-  console.log(isOpen);
+  const { addToCart } = useContext(MainContext);
+  //console.log(isOpen);
 
   //   const handleAssending = (a, b) => {
   //     const sorted = dominios.sort((a, b) => (a.name > b.name ? 1 : -1));

@@ -37,7 +37,7 @@ export const ViewSearch = () => {
             className="btn btn-primary"
             onClick={handleView}
           >
-            Lista/Categorias
+            Listado/Tarjetas
           </button>
         </div>
         <CartDomain />

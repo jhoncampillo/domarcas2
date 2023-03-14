@@ -1,18 +1,18 @@
 import React from "react";
-import { MainContext } from "../../Context/MainContext";
-import { useContext } from "react";
+//import { MainContext } from "../../Context/MainContext";
+//import { useContext } from "react";
 {
 }
 
-export const CardItem = ({ domCart }) => {
-  const { delfromcart } = useContext(MainContext);
+export const CardItem = ({ domCart, delfromcart }) => {
+  //const { delFromcart } = useContext(MainContext);
   //let { name, precioVenta, categoria } = cart;
   //console.log(name);
   console.log("PPPP", domCart);
   //console.log("XXXXX", data);
   return (
     <div class="row">
-      <div class="col-sm-6">
+      <div className="col-sm-6">
         <div className="card mb-2" style={{ width: "12rem" }}>
           {/* <img src="..." className="card-img-top" alt="..."> */}
           <div className="card-body">

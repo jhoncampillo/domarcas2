@@ -2,8 +2,8 @@ import React from "react";
 //import { useState, useEffect } from "react";
 import { ViewSearch, Search } from "../../View-Search/";
 import { SearchForCategory } from "../../View-Search/SearchForCategory";
-import { useContext, useState } from "react";
-import { MainContext } from "../../../Context/MainContext";
+import { useState } from "react";
+//import { MainContext } from "../../../Context/MainContext";
 //import { MainContextProvider } from "../../../Context/MainContextProvider";
 //import { ContexPorta } from "../../../Context/MainContext";
 

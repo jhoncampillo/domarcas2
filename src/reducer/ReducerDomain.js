@@ -63,22 +63,26 @@ export const ReducerDomain = (state, action) => {
     }
     case DomainTypes.REMOVE_ONE_FROM_CARD: {
       //throw new Error("Action.type=TYPES.REMOVE_ONE_FROM_CARD no implementada");
-      let itemDelete = state.cart.find((item) => item.id === action.payload);
+      // let itemDelete = state.cart.find((item) => item.name === action.payload);
 
-      return itemDelete.cantidad > 1
-        ? {
-            ...state,
-            cart: state.cart.map((item) =>
-              item.id === action.payload
-                ? { ...item, cantidad: item.cantidad - 1 }
-                : item
-            ),
-          }
-        : {
-            //cuando el item es menor a 1 traigo lo que tien el state y filtro por item diferente al pyload
-            ...state,
-            cart: state.cart.filter((item) => item.id !== action.payload),
-          };
+      // return itemDelete.cantidad > 1
+      // ? {
+      //     ...state,
+      //     cart: state.cart.map((item) =>
+      //       item.id === action.payload
+      //         ? { ...item, cantidad: item.cantidad - 1 }
+      //         : item
+      //     ),
+      //   }
+      // : {
+      //     //cuando el item es menor a 1 traigo lo que tien el state y filtro por item diferente al pyload
+      //     ...state,
+      //     cart: state.cart.filter((item) => item.id !== action.payload),
+      //   };
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.name !== action.payload),
+      };
     }
 
     case DomainTypes.CLEAR_ALL_FROM_CARD: {
@@ -86,7 +90,7 @@ export const ReducerDomain = (state, action) => {
       //action.payload;
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload),
+        cart: state.cart.filter((item) => item.name !== action.payload),
       };
     }
 
@@ -94,6 +98,17 @@ export const ReducerDomain = (state, action) => {
       //throw new Error("Action.type=TYPES.CLEAR_CART no implementada");
       return action.payload;
     }
+    case DomainTypes.LOGIN:
+      return {
+        ...state,
+        logged: true,
+        name: action.payload,
+      };
+
+    case DomainTypes.LOGOUT:
+      return {
+        logged: false,
+      };
 
     default:
       return state;
